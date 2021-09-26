@@ -29,10 +29,11 @@
         text
       >
         <span class="mr-2">Latest Release</span>
+
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
-
+    <Loading v-if="loading" />
     <v-main>
       <router-view />
     </v-main>
@@ -40,11 +41,24 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+import Loading from "./components/Loading.vue";
 export default {
   name: "App",
-
-  data: () => ({
-    //
-  }),
+  components: {
+    Loading,
+  },
+  computed: {
+    ...mapGetters({
+      loading: "getLoading",
+    }),
+  },
+  methods: {
+    ...mapActions(["getUserInformation", "getUserRepos"]),
+  },
+  created() {
+    this.getUserInformation();
+    this.getUserRepos();
+  },
 };
 </script>
