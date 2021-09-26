@@ -6,7 +6,12 @@
     </v-tabs>
 
     <v-tabs-items v-model="tab">
-      <v-tab-item value="tab-1"> </v-tab-item>
+      <v-tab-item value="tab-1">
+        <Overview
+          srcGitHubStats="https://github-readme-stats.vercel.app/api?username=yurirolandi"
+          srcLinkMostUsedLanguages="https://github-readme-stats.vercel.app/api/top-langs/?username=yurirolandi&layout=compact"
+        />
+      </v-tab-item>
       <v-tab-item value="tab-2"
         ><Repositories :repos="getGitHubRepos" />
       </v-tab-item>
@@ -17,6 +22,7 @@
 <script>
 import { mapGetters } from "vuex";
 import Repositories from "./Repositories.vue";
+import Overview from "./Overview.vue";
 export default {
   data() {
     return {
@@ -25,6 +31,7 @@ export default {
   },
   components: {
     Repositories,
+    Overview,
   },
   computed: {
     ...mapGetters(["getGitHubRepos"]),

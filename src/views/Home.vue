@@ -10,6 +10,7 @@
         :followers="user.followers"
         :following="user.following"
         :star="2"
+        :location="user.location"
       />
       <Panel />
     </v-card>
